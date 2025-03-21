@@ -9,6 +9,33 @@ return {
   {
     "leoluz/nvim-dap-go",
     opts = {},
+    keys = {
+      { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle Breakpoint(Dap)" },
+      { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue Debug" },
+      {
+        "<leader>dt",
+        function()
+          require("dap-go").debug_test()
+        end,
+        desc = "Debug test near cursor",
+      },
+    },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = function()
+      require("dapui").setup()
+    end,
+    keys = {
+      {
+        "<leader>du",
+        function()
+          require("dapui").toggle()
+        end,
+        desc = "Toggle DapUI",
+      },
+    },
   },
   {
     "fredrikaverpil/neotest-golang",
